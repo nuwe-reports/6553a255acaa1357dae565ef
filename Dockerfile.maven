@@ -1,0 +1,21 @@
+# Dockerfile Multistage
+
+# Stage 1: Build and run tests
+FROM maven:3.8.4-openjdk-8 AS build
+WORKDIR /app
+
+# Copy files and build the application
+COPY pom.xml .
+COPY src src
+RUN mvn clean test
+
+# Stage 2: Compile and run
+FROM maven:3.8.4-openjdk-8 AS final
+WORKDIR /app
+
+COPY --from=build /app /app
+
+RUN mvn package
+
+# Default port, as it is not specified in the 'properties' file
+EXPOSE 8080
