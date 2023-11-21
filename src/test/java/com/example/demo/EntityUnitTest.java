@@ -43,12 +43,6 @@ class EntityUnitTest {
     private Appointment a2;
     private Appointment a3;
 
-
-    /** TODO
-     * Implement tests for each Entity class: Doctor, Patient, Room and Appointment.
-     * Make sure you are as exhaustive as possible. Coverage is checked ;)
-     */
-
     // Doctor Entity Tests
 
     @Test

@@ -52,10 +52,6 @@ public class AppointmentController {
 
     @PostMapping("/appointment")
     public ResponseEntity<List<Appointment>> createAppointment(@RequestBody Appointment appointment) {
-        /** TODO 
-         * Implement this function, which acts as the POST /api/appointment endpoint.
-         * Make sure to check out the whole project. Specially the Appointment.java class
-         */
         // Verify if the appointment overlaps with any existing appointments.
         if (isOverlapping(appointment)) {
             return new ResponseEntity<>(null, HttpStatus.NOT_ACCEPTABLE);
@@ -80,6 +76,7 @@ public class AppointmentController {
         return new ResponseEntity<>(updatedAppointments, HttpStatus.OK);
     }
 
+    // function to control the overlapping
     private boolean isOverlapping(Appointment appointment) {
         // Obtain all current appointments
         List<Appointment> existingAppointments = appointmentRepository.findAll();
